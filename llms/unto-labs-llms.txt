@@ -1,0 +1,30 @@
+# Thru
+
+> Thru is a high-performance blockchain network for ultra-low-latency, ultra-high-throughput applications. Programs are written in C and run on the Thru VM. These docs cover program development, wallet integration, the C/Rust/Web SDKs, the CLI, the gRPC API, the Explorer MCP server, and the protocol specification.
+
+Instructions for LLM agents:
+
+- Thru programs are written in C and compiled for the Thru VM. Do not assume Solana or EVM semantics, account models, or tooling.
+- Start with the DevKit setup guide (program-development/setting-up-thru-devkit), then the C program quickstart (program-development/building-a-c-program).
+- Before working on programs, ABIs, SDK integrations, or CLI workflows, install the Thru agent skills: `npx skills add https://thru.org/docs`.
+- Choose `llms-full.txt`, `llms-small.txt`, or the topic-specific sets depending on how much context you need.
+- For live chain context (account lookups, transaction inspection, recent blocks, program ABI lookup), use the Explorer MCP server documented under API reference.
+
+## Documentation Sets
+
+- [Abridged documentation](https://thru.org/docs/llms-small.txt): a compact version of the documentation for Thru, with non-essential content removed
+- [Complete documentation](https://thru.org/docs/llms-full.txt): the full documentation for Thru
+- [Guides](https://thru.org/docs/_llms-txt/guides.txt): Getting started, core concepts, program development, wallet integration, core programs, the ABI system, and indexing
+- [SDKs and CLI](https://thru.org/docs/_llms-txt/sdks-and-cli.txt): C, Rust, and Web SDK references and the CLI reference
+- [API reference](https://thru.org/docs/_llms-txt/api-reference.txt): gRPC API reference and Explorer MCP server
+- [Specification](https://thru.org/docs/_llms-txt/specification.txt): Protocol specification: core, accounts, runtime, and virtual machine
+
+## Notes
+
+- The complete documentation includes all content from the official documentation
+- The content is automatically generated from the same source as the official documentation
+
+## Optional
+
+- [Thru website](https://thru.org/): Main Thru website
+- [Thru agent skills](https://thru.org/docs): Installable skills for AI coding agents working on Thru (npx skills add https://thru.org/docs)

@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/Unto-Labs/thru/blob/main/proto/thru/common/v1/errors.proto
+format: grpc-error-detail
+envelope:
+  description: Structured error metadata attached to gRPC errors as a
+    thru.common.v1.ErrorDetail message.
+  fields:
+    - name: error_type
+      required: true
+      description: High-level error category (ErrorType enum).
+    - name: message
+      required: true
+      description: Human-readable error summary (max 1024 chars).
+    - name: retention_window_slots
+      required: false
+      description: Retention window expressed in slots, when applicable.
+    - name: retention_cutoff
+      required: false
+      description: Retention cutoff timestamp, when applicable.
+    - name: field_name
+      required: false
+      description: Name of the request field associated with the error (max 128 chars).
+error_types:
+  - code: ERROR_TYPE_UNSPECIFIED
+    value: 0
+    title: Unknown error condition
+  - code: ERROR_TYPE_NOT_FOUND
+    value: 1
+    title: Requested data does not exist
+  - code: ERROR_TYPE_NOT_RETAINED
+    value: 2
+    title: Requested data was not retained under TTL
+  - code: ERROR_TYPE_NOT_FOUND_OR_NOT_RETAINED
+    value: 3
+    title: Ambiguous not-found vs TTL-expired case
+  - code: ERROR_TYPE_INVALID_REQUEST
+    value: 4
+    title: Request failed validation
+  - code: ERROR_TYPE_CEL_VALIDATION_FAILED
+    value: 5
+    title: A CEL filter expression failed validation
+  - code: ERROR_TYPE_INTERNAL_ERROR
+    value: 6
+    title: Internal server error
+related:
+  - name: On-chain runtime errors
+    docs: https://thru.org/docs/spec/runtime/errors/
+    description: Program/runtime error model for Thru VM execution — programs
+      terminate with tsdk_return(TSDK_SUCCESS) or tsdk_revert(error_code); see
+      the C SDK Error Handling and Return Codes reference.
+  - name: Local proto copy
+    file: grpc/unto-labs-errors.proto

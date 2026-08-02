@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/Unto-Labs/thru/releases
+scheme: semver (single release train across CLI, SDKs, npm packages, and crates; pre-1.0)
+current_version: v0.2.39
+release_count: 77
+entries:
+  - version: v0.2.39
+    date: '2026-07-17'
+  - version: v0.2.38
+    date: '2026-06-30'
+  - version: v0.2.37
+    date: '2026-06-30'
+  - version: v0.2.36
+    date: '2026-06-26'
+  - version: v0.2.35
+    date: '2026-06-25'
+  - version: v0.2.34
+    date: '2026-06-24'
+  - version: v0.2.33
+    date: '2026-06-24'
+  - version: v0.2.32
+    date: '2026-06-23'
+  - version: v0.2.31
+    date: '2026-06-23'
+  - version: v0.2.30
+    date: '2026-06-17'
+notes:
+  - Releases are published on the Unto-Labs/thru GitHub repository (public mirror of the internal repo) and mirrored to npm and crates.io at the same version.
+  - The docs caution that install workflows will change frequently until v1.0.0.

@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: https://thru.org/docs/cli-reference/faucet-commands/ + https://thru.org/docs/program-development/setting-up-thru-devkit/
+environment:
+  name: Alphanet
+  description: Thru's public pre-production network. The default CLI RPC endpoint
+    is the public Alphanet endpoint; there is no separate live/production mainnet
+    key mode yet — the whole network is in its test/beta phase.
+  rpc_endpoint: https://rpc.alphanet.thru.org
+  config: Set rpc_base_url in ~/.thru/cli/config.yaml
+funding:
+  tool: thru faucet (CLI, operates on the on-chain faucet program)
+  commands:
+    - command: thru faucet deposit <account> <amount>
+      purpose: Deposit funds into the faucet.
+    - command: thru faucet withdraw <account> <amount>
+      purpose: Withdraw funds from the faucet to fund an account for test, beta,
+        or dev workflows.
+  limits:
+    - withdraw is capped at 10000 per transaction
+  examples:
+    - thru faucet withdraw default 1000
+    - thru faucet withdraw my-key 1000
+  notes:
+    - Both commands accept --fee-payer.
+    - The account argument can be a key name or a raw thrufmt address (ta...).
+alternate_networks:
+  - The Explorer MCP endpoint accepts ?rpc=<url> to target devnet, staging, or
+    another explorer-compatible RPC endpoint.
+test_values:
+  notes: No published magic test identifiers (test cards, fixed test accounts);
+    developers generate their own keypairs and fund them from the faucet.

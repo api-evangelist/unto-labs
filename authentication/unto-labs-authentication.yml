@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://thru.org/docs (DevKit setup, wallet integration, gRPC API reference)
+summary:
+  types: [signature-based]
+  api_key_in: []
+  oauth2_flows: []
+model:
+  reads: The public Alphanet gRPC endpoint (https://rpc.alphanet.thru.org) is
+    documented without API keys or tokens — QueryService and StreamingService
+    reads are open.
+  writes: State-changing operations (CommandService SendTransaction /
+    BatchSendTransactions / SendAndTrackTxn) are authorized by transaction
+    signatures from user-held keypairs, not by API credentials.
+credentials:
+  - kind: local-keypair
+    description: Keypairs are generated and stored locally by the CLI (thru keys
+      generate <name>, stored as plaintext hex in ~/.thru/cli/config.yaml).
+      Addresses and signatures use thrufmt encoding (ta.../ts...).
+  - kind: embedded-wallet
+    description: Browser apps integrate the hosted Thru wallet via @thru/wallet
+      (approval and signing flows documented under wallet integration).
+    docs: https://thru.org/docs/wallet/overview/
+  - kind: passkey
+    description: Cross-platform passkey helpers via @thru/passkey for
+      authenticating Thru applications.
+external_signers:
+  docs: https://thru.org/docs (C SDK reference, External Signers)
+notes:
+  - No OAuth2, OpenID Connect, API-key, or mutual-TLS scheme is published; scopes/ is not applicable.

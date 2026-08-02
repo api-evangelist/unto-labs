@@ -1,0 +1,64 @@
+generated: '2026-07-21'
+method: searched
+source: https://thru.org/docs/cli-reference/overview/
+name: thru
+description: First-party Thru command-line interface for configuring RPC endpoints,
+  managing keys and accounts, deploying and testing on-chain programs, working with
+  ABIs, tokens, the .thru name service, and the faucet.
+install:
+  - method: npm
+    command: npm i -g thru
+    notes: Installs a prebuilt binary for macOS, Windows, and Linux; no Rust toolchain required.
+  - method: deb
+    command: Download and install the .deb package from the Thru GitHub release (Debian/Ubuntu x64).
+    url: https://github.com/Unto-Labs/thru/releases
+configuration:
+  file: ~/.thru/cli/config.yaml
+  rpc_base_url: https://rpc.alphanet.thru.org
+  notes: Default RPC endpoint is the public Alphanet endpoint; keys are stored locally in the config file.
+command_groups:
+  - group: account
+    purpose: Create and inspect on-chain accounts (thru account create <name>).
+  - group: abi
+    purpose: ABI tooling — analyze, bundle, codegen, flatten, reflect, prep-for-publish.
+  - group: debug
+    purpose: Debugging helpers against deployed behavior.
+  - group: dev
+    purpose: Devkit management — thru dev toolchain install, thru dev sdk install c.
+  - group: faucet
+    purpose: Deposit to or withdraw from the faucet program to fund test accounts.
+  - group: keys
+    purpose: Keypair management (thru keys generate <name>).
+  - group: name-service
+    purpose: .thru name service operations.
+  - group: network
+    purpose: Network configuration, profiles, and endpoint selection.
+  - group: program
+    purpose: Deploy, upgrade, and manage on-chain programs.
+  - group: registrar
+    purpose: .thru domain registry — initialize registry, purchase domain, renew lease, claim expired domain.
+  - group: rpc
+    purpose: Raw RPC calls (e.g. thru getversion, thru --json getversion).
+  - group: token
+    purpose: Token operations.
+  - group: transaction
+    purpose: Build, sign, submit, and inspect transactions.
+  - group: uploader
+    purpose: Upload flows for program and data publishing.
+  - group: utility
+    purpose: Miscellaneous helper commands.
+  - group: wrapped-thru
+    purpose: Wrapped Thru token operations.
+key_flows:
+  - name: Devkit setup
+    steps: [npm i -g thru, thru dev toolchain install, thru dev sdk install c, thru getversion]
+  - name: First account
+    steps: [thru keys generate default, thru account create default]
+  - name: Fund a test account from the faucet
+    steps: [thru faucet withdraw default 1000]
+global_flags:
+  - --json
+  - --fee-payer
+notes:
+  - The install workflow is documented as changing frequently until v1.0.0.
+docs: https://thru.org/docs/cli-reference/overview/

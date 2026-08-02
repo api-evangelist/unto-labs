@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: derived
+source: grpc/unto-labs-query-service.proto + thru/core/v1 protos
+entities:
+  - name: Account
+    id_format: thrufmt public key (ta...)
+    proto: thru.core.v1.Account
+    notes: Retrieved decoded (GetAccount) or raw (GetRawAccount); listable with
+      required CEL filters over account metadata fields.
+  - name: Transaction
+    id_format: thrufmt signature (ts...)
+    proto: thru.core.v1.Transaction
+    notes: Retrieved decoded or raw by signature; status via GetTransactionStatus.
+  - name: Block
+    id_format: slot (uint64) or block_hash
+    proto: thru.core.v1.Block
+  - name: Event
+    proto: thru.services.v1.Event
+    notes: Emitted by program execution; queryable via GetEvent/ListEvents and
+      streamable via StreamEvents.
+  - name: StateProof
+    proto: thru.core.v1.StateProof
+    notes: Generated via GenerateStateProof; used e.g. for fee-payer-proof
+      account creation.
+  - name: Node
+    proto: thru.core.v1 (node.proto)
+    notes: Node pubkey, records, and status via GetNodePubkey/GetNodeRecords/GetNodeStatus.
+relationships:
+  - from: Block
+    to: Transaction
+    kind: has_many
+    via: slot
+  - from: Account
+    to: Transaction
+    kind: has_many
+    via: ListTransactionsForAccount(address)
+  - from: Transaction
+    to: Event
+    kind: has_many
+    via: transaction signature (events emitted during execution)
+  - from: Account
+    to: StateProof
+    kind: has_one
+    via: GenerateStateProof(request for account state)
+  - from: Program (Account)
+    to: ABI
+    kind: has_one
+    via: on-chain ABI fetched by explorer reflection (get_program_abi)
+notes:
+  - Derived from proto request/response shapes; Thru has an account model with
+    C programs running on the Thru VM — not EVM or Solana semantics.

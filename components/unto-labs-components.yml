@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://thru.org/docs/wallet/overview/ + npm @thru/wallet, @thru/passkey
+families:
+  - family: Embedded Wallet
+    description: Hosted Thru wallet experience embeddable in web apps. @thru/wallet
+      is the low-level browser SDK that manages the embed and the approval and
+      signing flows (documented under Embedded Wallet Integration and Approval
+      and Signing).
+    loader: "@thru/wallet"
+    install: npm install @thru/wallet
+    docs: https://thru.org/docs/wallet/embedded-wallet-integration/
+  - family: Passkeys
+    description: Cross-platform passkey helpers for authenticating users of Thru
+      applications.
+    loader: "@thru/passkey"
+    install: npm install @thru/passkey
+notes:
+  - Distinct from the server-side/client SDKs catalogued in packages/unto-labs-packages.yml.

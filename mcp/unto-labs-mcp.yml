@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://thru.org/docs/api-ref/explorer-mcp/overview/
+name: Thru Explorer MCP
+description: Official hosted MCP server on the Thru block explorer. Lets AI agents
+  inspect blocks, transactions, accounts, recent activity, search results, and
+  on-chain program ABIs with live chain context. Tool responses use an
+  LLM-oriented text format (format=toon) instead of browser HTML.
+server:
+  name: thru-explorer
+  transport: http
+  url: https://scan.thru.org/api/mcp
+install:
+  claude-code: claude mcp add --transport http thru-explorer https://scan.thru.org/api/mcp
+  codex: codex mcp add thruExplorer --url https://scan.thru.org/api/mcp
+options:
+  rpc_override: The endpoint accepts an optional ?rpc=<url> query parameter to
+    point the same agent workflow at devnet, staging, or another
+    explorer-compatible RPC endpoint. Invalid or missing values fall back to the
+    default network.
+tools:
+  - name: get_block
+    description: Inspect a specific block, its producer, timestamps, and transaction rows.
+    inputs: [slot]
+  - name: get_transaction
+    description: Debug a single transaction, including accounts, instructions, and events.
+    inputs: [signature]
+  - name: get_account
+    description: Look up account metadata, balance, owner, and flags.
+    inputs: [address]
+  - name: list_account_transactions
+    description: Walk an account's recent history without fetching each transaction manually.
+    inputs: [address, pageSize, pageToken]
+  - name: list_recent_blocks
+    description: Recent network activity and slot-level monitoring (limit 1-50).
+    inputs: [limit]
+  - name: list_recent_transactions
+    description: Recent chain-wide transaction activity (limit 1-50).
+    inputs: [limit]
+  - name: search
+    description: Resolve whether an unknown value is a slot, transaction signature, or account address.
+    inputs: [query]
+  - name: get_program_abi
+    description: Fetch the on-chain ABI that explorer tooling uses for reflection.
+    inputs: [program]
+notes:
+  - Account addresses use thrufmt addresses like ta...; transaction signatures use ts...
+  - list_account_transactions accepts pageSize values from 1 to 100.
+  - Read-only. To send transactions or mutate chain state use the CLI or SDKs.
+docs: https://thru.org/docs/api-ref/explorer-mcp/tools-reference/

@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: generated
+provider_published:
+  - name: thru-best-practices
+    description: Provider-published Agent Skill described in the Thru docs
+      ("Build with LLMs") as the highest-value default skill for agentic Thru
+      development — programs, ABIs, SDK integrations, and CLI workflows.
+    install: npx skills add https://thru.org/docs
+    source: https://thru.org/docs/getting-started/build-with-an-llm/
+    notes: Distributed through the skills installer against the docs site; the
+      raw skill file is not directly fetchable at a stable URL, so it is
+      referenced here rather than mirrored.
+skills:
+  - file: unto-labs-inspect-chain-state.md
+    name: Inspect Thru chain state with the Explorer MCP
+    api: mcp/unto-labs-mcp.yml
+    operations: [get_block, get_transaction, get_account,
+      list_account_transactions, list_recent_blocks, list_recent_transactions,
+      search, get_program_abi]
+  - file: unto-labs-fund-and-create-account.md
+    name: Set up the Thru CLI, create an account, and fund it from the faucet
+    api: cli/unto-labs-cli.yml
+    operations: ["thru getversion", "thru keys generate", "thru account create",
+      "thru faucet withdraw"]

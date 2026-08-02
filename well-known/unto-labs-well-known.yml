@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+hosts:
+  - host: https://thru.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://scan.thru.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://untolabs.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, note: SPA fallback HTML shell, not a real security.txt}
+      - {path: /.well-known/openid-configuration, status: 200, note: SPA fallback HTML shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, note: SPA fallback HTML shell}
+      - {path: /.well-known/api-catalog, status: 200, note: SPA fallback HTML shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, note: SPA fallback HTML shell}
+  - host: https://rpc.alphanet.thru.org
+    documents:
+      - {path: /.well-known/security.txt, status: 415, note: gRPC endpoint rejects non-gRPC content types}
+      - {path: /.well-known/openid-configuration, status: 415}
+      - {path: /.well-known/oauth-authorization-server, status: 415}
+      - {path: /.well-known/api-catalog, status: 415}
+      - {path: /.well-known/ai-plugin.json, status: 415}
+  - host: https://docs.thru.org
+    documents:
+      - {path: /.well-known/security.txt, status: 200, note: docs-site fallback page (Welcome to Thru), not a real security.txt}
+      - {path: /llms.txt, status: 200, note: REAL llms.txt — saved at llms/unto-labs-llms.txt}
+notes:
+  - No genuine RFC 9116 security.txt or OIDC/OAuth/api-catalog/ai-plugin
+    discovery documents were found on any host; the only real well-known-style
+    surface is the llms.txt family on the docs host.

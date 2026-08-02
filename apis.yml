@@ -1,27 +1,155 @@
 aid: unto-labs
 name: Unto Labs
-description: 'Unto Labs is a company surfaced as a portfolio company of electric-capital and added to
-  the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'Unto Labs is the team behind Thru, a high-performance Layer 1
+  blockchain for ultra-low-latency, ultra-high-throughput applications, built
+  around ThruVM — a novel virtual machine targeting the RISC-V architecture so
+  programs are written in plain C rather than crypto-specific languages. Founded
+  in late 2024 by Jump Crypto / Solana alums and backed by Framework Ventures
+  and Electric Capital, Unto Labs publishes a public gRPC and gRPC-Web API on
+  the Thru Alphanet, protobuf definitions, C/Rust/TypeScript SDKs, a first-party
+  CLI, a hosted Explorer MCP server for AI agents, llms.txt documentation sets,
+  and installable agent skills.'
 url: https://raw.githubusercontent.com/api-evangelist/unto-labs/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://github.com/Unto-Labs.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - electric-capital
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 33
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Crypto
-apis: []
+- Blockchain
+- Layer 1
+- RISC-V
+- Virtual Machines
+- gRPC
+- Web3
+- Infrastructure
+apis:
+- name: Thru gRPC API
+  description: High-performance proto3 gRPC API (with gRPC-Web for browsers) for
+    the Thru blockchain. QueryService exposes 24 read operations over accounts,
+    blocks, transactions, events, state proofs, and node status; CommandService
+    submits transactions; StreamingService provides 8 real-time streams (blocks,
+    account updates, transactions, events, height, slot metrics, node records);
+    DebugService supports re-execution.
+  humanURL: https://thru.org/docs/api-ref/grpc/overview/
+  baseURL: https://rpc.alphanet.thru.org
+  tags:
+  - Blockchain
+  - gRPC
+  - Streaming
+  properties:
+  - type: APIReference
+    url: https://thru.org/docs/api-ref/grpc/overview/
+  - type: Protobuf
+    name: QueryService
+    url: grpc/unto-labs-query-service.proto
+  - type: Protobuf
+    name: CommandService
+    url: grpc/unto-labs-command-service.proto
+  - type: Protobuf
+    name: StreamingService
+    url: grpc/unto-labs-streaming-service.proto
+  - type: Protobuf
+    name: DebugService
+    url: grpc/unto-labs-debug-service.proto
+  - type: ErrorCatalog
+    url: errors/unto-labs-error-codes.yml
+- name: Thru Explorer MCP Server
+  description: Official hosted Model Context Protocol server on the Thru block
+    explorer. Exposes eight read-only tools (get_block, get_transaction,
+    get_account, list_account_transactions, list_recent_blocks,
+    list_recent_transactions, search, get_program_abi) returning LLM-oriented
+    output, with an optional ?rpc= override to target other networks.
+  humanURL: https://thru.org/docs/api-ref/explorer-mcp/overview/
+  baseURL: https://scan.thru.org/api/mcp
+  tags:
+  - MCP
+  - Blockchain
+  - Agents
+  properties:
+  - type: APIReference
+    url: https://thru.org/docs/api-ref/explorer-mcp/tools-reference/
+  - type: MCPServer
+    url: mcp/unto-labs-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/unto-labs-domain-security.yml
 - type: Website
   url: https://untolabs.com/
+- type: ProductWebsite
+  url: https://thru.org/
+- type: DeveloperPortal
+  url: https://thru.org/docs
+- type: Documentation
+  url: https://docs.thru.org
+- type: GettingStarted
+  url: https://thru.org/docs/program-development/setting-up-thru-devkit
+- type: GitHubOrganization
+  url: https://github.com/Unto-Labs
+- type: Support
+  url: https://t.me/thruxyz
+- type: XAccount
+  url: https://x.com/thru_xyz
+- type: Careers
+  url: https://jobs.ashbyhq.com/unto-labs
+- type: StatusPage
+  url: https://status.thru.org
+- type: ChangeLog
+  url: changelog/unto-labs-changelog.yml
+- type: LLMsTxt
+  url: llms/unto-labs-llms.txt
+- type: MCPServer
+  url: mcp/unto-labs-mcp.yml
+- type: Packages
+  url: packages/unto-labs-packages.yml
+- type: SDKs
+  url: packages/unto-labs-packages.yml
+- type: CLI
+  url: cli/unto-labs-cli.yml
+- type: ErrorCatalog
+  url: errors/unto-labs-error-codes.yml
+- type: Conventions
+  url: conventions/unto-labs-conventions.yml
+- type: Lifecycle
+  url: lifecycle/unto-labs-lifecycle.yml
+- type: Authentication
+  url: authentication/unto-labs-authentication.yml
+- type: Sandbox
+  url: sandbox/unto-labs-sandbox.yml
+- type: Conformance
+  url: conformance/unto-labs-conformance.yml
+- type: Components
+  url: components/unto-labs-components.yml
+- type: DataModel
+  url: data-model/unto-labs-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

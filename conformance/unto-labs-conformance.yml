@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: derived
+source: grpc/*.proto + https://thru.org/docs/api-ref/grpc/overview/
+standards:
+  - id: grpc
+    conforms: true
+    evidence: Four proto3 gRPC services (QueryService, CommandService,
+      StreamingService, DebugService) served at https://rpc.alphanet.thru.org.
+  - id: grpc-web
+    conforms: true
+    evidence: Docs state gRPC-Web is available on the same unified endpoint for
+      browser-based clients.
+  - id: proto3
+    conforms: true
+    evidence: All published proto files declare syntax = "proto3".
+  - id: protovalidate
+    conforms: true
+    evidence: Protos use buf.validate (protovalidate) field and message
+      constraints, including CEL message-level rules.
+  - id: cel-filtering
+    conforms: true
+    evidence: List RPCs take required CEL (Common Expression Language) filter
+      expressions (thru/common/v1/filters.proto).
+  - id: aip-cursor-pagination
+    conforms: true
+    evidence: Google AIP-158-style page_size/page_token/order_by request and
+      next_page_token/total_size response messages (thru/common/v1/pagination.proto).
+  - id: riscv-vm
+    conforms: true
+    evidence: Thru VM (ThruVM) targets the RISC-V architecture; programs are
+      compiled with a RISC-V cross-compilation toolchain.
+  - id: mcp
+    conforms: true
+    evidence: Official hosted Model Context Protocol server at
+      https://scan.thru.org/api/mcp (streamable HTTP transport).
+  - id: llms-txt
+    conforms: true
+    evidence: Publishes /llms.txt with abridged/full/topic documentation sets at
+      https://docs.thru.org/llms.txt.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth2 scheme published; access is signature-based.
+  - id: oidc
+    conforms: false
+    evidence: No OpenID Connect discovery or scheme published.
+  - id: openapi
+    conforms: false
+    evidence: No OpenAPI/Swagger definition published; the API surface is gRPC.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use gRPC status with a structured ErrorDetail proto rather
+      than application/problem+json.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returned 404 on thru.org and
+      scan.thru.org (docs.thru.org and untolabs.com return SPA fallback pages).
+notes:
+  - No published compliance program or certifications (SOC 2 / ISO 27001 / etc.)
+    were found, so no Compliance pointer is emitted.

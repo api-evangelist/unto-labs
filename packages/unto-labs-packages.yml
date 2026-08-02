@@ -1,0 +1,85 @@
+generated: '2026-07-21'
+method: searched
+source: https://registry.npmjs.org + https://crates.io + https://thru.org/docs/program-development/developer-resources/
+packages:
+  - language: javascript
+    registry: npm
+    name: "@thru/sdk"
+    url: https://www.npmjs.com/package/@thru/sdk
+    install: npm install @thru/sdk
+    version: 0.2.39
+    description: Typed TypeScript/JavaScript client for talking to the Thru blockchain.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@thru/wallet"
+    url: https://www.npmjs.com/package/@thru/wallet
+    install: npm install @thru/wallet
+    version: 0.2.39
+    description: Low-level browser SDK for embedding the Thru wallet experience.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@thru/indexer"
+    url: https://www.npmjs.com/package/@thru/indexer
+    install: npm install @thru/indexer
+    version: 0.2.39
+    description: Reusable blockchain indexing framework for building backends that index Thru chain data.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@thru/passkey"
+    url: https://www.npmjs.com/package/@thru/passkey
+    install: npm install @thru/passkey
+    version: 0.2.39
+    description: Cross-platform passkey helpers for Thru applications.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@thru/programs"
+    url: https://www.npmjs.com/package/@thru/programs
+    install: npm install @thru/programs
+    description: Program helpers for Thru applications (used with @thru/sdk).
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@thru/replay"
+    url: https://www.npmjs.com/package/@thru/replay
+    install: npm install @thru/replay
+    description: Replay tooling used with the Thru indexer framework.
+    official: true
+  - language: javascript
+    registry: npm
+    name: thru
+    url: https://www.npmjs.com/package/thru
+    install: npm i -g thru
+    version: 0.2.39
+    description: Thru command-line interface (prebuilt binary for macOS, Windows, Linux).
+    official: true
+  - language: rust
+    registry: crates.io
+    name: thru-base
+    url: https://crates.io/crates/thru-base
+    install: cargo add thru-base
+    version: 0.2.39
+    description: Thru base types for Rust.
+    official: true
+  - language: rust
+    registry: crates.io
+    name: thru-grpc-client
+    url: https://crates.io/crates/thru-grpc-client
+    install: cargo add thru-grpc-client tonic
+    version: 0.2.39
+    description: Thru gRPC client for Rust (tonic-based).
+    official: true
+  - language: c
+    registry: github
+    name: thru-sdk (C SDK)
+    url: https://github.com/Unto-Labs/thru
+    install: thru dev sdk install c
+    description: Complete development kit for writing Thru on-chain programs in C,
+      compiled with the RISC-V cross-compilation toolchain (thru dev toolchain install).
+    official: true
+notes:
+  - All npm packages and crates are versioned in lockstep with the Thru release train (v0.2.39 as of 2026-07-17).
+  - The npm package `thru` repository field points at github.com/Unto-Labs/thru, confirming first-party publication.

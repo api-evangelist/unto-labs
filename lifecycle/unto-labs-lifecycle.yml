@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.thru.org/ + https://thru.org/docs/program-development/setting-up-thru-devkit/
+status_page: https://status.thru.org
+status_page_details:
+  provider_hosted: true
+  components:
+    - group: Web
+      count: 4
+    - group: Alphanet
+      count: 2
+  notes: Public status page with component uptime (100% Apr-Jul 2026 at capture),
+    incident history, and subscribe-to-updates.
+versioning:
+  scheme: semver release train (pre-1.0)
+  current: v0.2.39
+  network_phase: Alphanet (public test/beta network at rpc.alphanet.thru.org)
+  proto_packages: [thru.core.v1, thru.common.v1, thru.services.v1]
+  stability_note: Docs caution the install workflow will change frequently until
+    v1.0.0; check back when upgrading between versions.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy or RFC 8594 Sunset-header support found.
+sla:
+  url: null
+  notes: No published SLA found; Alphanet is a pre-production network.
+data_retention:
+  notes: RPC reads are subject to retention TTLs — errors distinguish NOT_FOUND
+    from NOT_RETAINED with retention_window_slots / retention_cutoff metadata.
+deprecated_operations: []

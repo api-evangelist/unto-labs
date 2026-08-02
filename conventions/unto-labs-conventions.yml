@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: searched
+source: https://thru.org/docs/api-ref/grpc/overview/ + proto definitions (github.com/Unto-Labs/thru/tree/main/proto)
+protocol:
+  style: gRPC (proto3, HTTP/2) with gRPC-Web for browsers
+  endpoint: https://rpc.alphanet.thru.org
+  serialization: Protocol Buffers binary (2-10x smaller than JSON per docs)
+  streaming: Bidirectional streaming via StreamingService (blocks, account
+    updates, transactions, events, transaction tracking, height, slot metrics,
+    node records)
+authentication:
+  style: none-for-reads
+  description: The public Alphanet RPC endpoint is documented without API keys.
+    Writes are authorized by transaction signatures from locally managed
+    keypairs (thru keys generate); browser apps can use the embedded wallet and
+    passkey helpers.
+  see: authentication/unto-labs-authentication.yml
+pagination:
+  style: cursor
+  request_message: thru.common.v1.PageRequest
+  params:
+    - name: page_size
+      constraints: 1-1000
+    - name: page_token
+      constraints: max 512 chars, resume position
+    - name: order_by
+      constraints: '"field [asc|desc]" form, max 256 chars'
+  response_fields:
+    - next_page_token
+    - total_size
+  source: grpc/unto-labs-pagination.proto
+filtering:
+  style: CEL (Common Expression Language)
+  description: List RPCs (e.g. ListAccounts) take a required CEL filter
+    expression over documented metadata fields; invalid expressions return
+    ERROR_TYPE_CEL_VALIDATION_FAILED.
+  source: grpc/unto-labs-filters.proto
+identifiers:
+  format: thrufmt
+  conventions:
+    - Account addresses are thrufmt strings prefixed ta...
+    - Transaction signatures are thrufmt strings prefixed ts...
+    - Block slots are non-negative integers
+consistency:
+  description: Read RPCs accept a required VersionContext and an optional
+    min_consensus (ConsensusStatus) to pin reads to a consensus level; block
+    reads select by slot or block_hash.
+error_envelope:
+  style: gRPC status with structured thru.common.v1.ErrorDetail
+  see: errors/unto-labs-error-codes.yml
+versioning:
+  api: Proto packages are versioned (thru.core.v1, thru.common.v1, thru.services.v1).
+  product: Single semver release train (v0.2.39), pre-1.0; breaking changes expected until v1.0.0.
+  see: lifecycle/unto-labs-lifecycle.yml
+idempotency:
+  documented: false
+  notes: No idempotency-key convention is documented; transaction submission
+    dedupes by signature as in typical blockchain semantics, but the docs do not
+    publish an idempotency contract.
+rate_limits:
+  documented: false
+validation:
+  style: buf.validate (protovalidate) annotations plus CEL message constraints in the protos.
