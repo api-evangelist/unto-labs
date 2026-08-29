@@ -10,6 +10,17 @@ description: 'Unto Labs is the team behind Thru, a high-performance Layer 1
   CLI, a hosted Explorer MCP server for AI agents, llms.txt documentation sets,
   and installable agent skills.'
 url: https://raw.githubusercontent.com/api-evangelist/unto-labs/refs/heads/main/apis.yml
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
