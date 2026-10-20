@@ -1,0 +1,184 @@
+{
+  "endpoint": "https://scan.thru.org/api/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "thru-explorer",
+    "version": "0.1.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "get_block",
+        "description": "Get block details by slot number, including producer, timestamp, and transactions",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slot": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991,
+              "description": "Block slot number"
+            }
+          },
+          "required": [
+            "slot"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_transaction",
+        "description": "Get transaction details by signature, including status, accounts, instructions, and events",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "signature": {
+              "type": "string",
+              "description": "Transaction signature"
+            }
+          },
+          "required": [
+            "signature"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_account",
+        "description": "Get account details by address, including balance, owner, and metadata",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "description": "Account address"
+            }
+          },
+          "required": [
+            "address"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "list_account_transactions",
+        "description": "List transactions for an account with pagination",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "description": "Account address"
+            },
+            "pageSize": {
+              "description": "Number of transactions per page (1-100, default 10)",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "pageToken": {
+              "description": "Pagination token for next page",
+              "type": "string"
+            }
+          },
+          "required": [
+            "address"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "list_recent_blocks",
+        "description": "List the most recent blocks on the chain",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "description": "Number of blocks to return (1-50, default 10)",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "list_recent_transactions",
+        "description": "List the most recent transactions across recent blocks",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "description": "Number of transactions to return (1-50, default 10)",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "search",
+        "description": "Search for blocks, transactions, or accounts by query (block number, tx signature, or address)",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search query"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      },
+      {
+        "name": "get_program_abi",
+        "description": "Get the on-chain ABI for a program, including instruction and event definitions",
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "program": {
+              "type": "string",
+              "description": "Program address"
+            }
+          },
+          "required": [
+            "program"
+          ]
+        },
+        "execution": {
+          "taskSupport": "forbidden"
+        }
+      }
+    ]
+  }
+}
