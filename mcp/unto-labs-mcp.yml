@@ -19,37 +19,37 @@ options:
     to the default network.
 tools:
 - name: get_block
-  description: Inspect a specific block, its producer, timestamps, and transaction rows.
+  description: Get block details by slot number, including producer, timestamp, and transactions
   inputs:
   - slot
 - name: get_transaction
-  description: Debug a single transaction, including accounts, instructions, and events.
+  description: Get transaction details by signature, including status, accounts, instructions, and events
   inputs:
   - signature
 - name: get_account
-  description: Look up account metadata, balance, owner, and flags.
+  description: Get account details by address, including balance, owner, and metadata
   inputs:
   - address
 - name: list_account_transactions
-  description: Walk an account's recent history without fetching each transaction manually.
+  description: List transactions for an account with pagination
   inputs:
   - address
   - pageSize
   - pageToken
 - name: list_recent_blocks
-  description: Recent network activity and slot-level monitoring (limit 1-50).
+  description: List the most recent blocks on the chain
   inputs:
   - limit
 - name: list_recent_transactions
-  description: Recent chain-wide transaction activity (limit 1-50).
+  description: List the most recent transactions across recent blocks
   inputs:
   - limit
 - name: search
-  description: Resolve whether an unknown value is a slot, transaction signature, or account address.
+  description: Search for blocks, transactions, or accounts by query (block number, tx signature, or address)
   inputs:
   - query
 - name: get_program_abi
-  description: Fetch the on-chain ABI that explorer tooling uses for reflection.
+  description: Get the on-chain ABI for a program, including instruction and event definitions
   inputs:
   - program
 notes:
@@ -90,3 +90,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 8
